@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/garyaj/perl6-raspberry-pi-device-piface.svg?branch=master)](https://travis-ci.org/garyaj/perl6-raspberry-pi-device-piface)
 
 NAME
--===
+====
 
 RPi::Device::PiFace - Perl6 module to drive the PiFace 2 GPIO expansion board
 for the Raspberry Pi 2.

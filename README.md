@@ -17,6 +17,30 @@ RPi::Device::PiFace controls the PiFace 2 expansion board for the Raspberry Pi 2
 
 This module uses Perl6's NativeCall module to interface the WiringPi C library and the MCP23S17.c SPI driver from wiringpi.org.
 
+USAGE
+=====
+
+use RPi;
+use RPi::Device::PiFace;
+
+RPi::Wiring::setup();
+
+# Setup the PiFace board
+# In effect, overlays RPi methods with equivalent methods from WiringPi's PiFace
+# C library
+my $res = RPi::Device::PiFace::setup-piface(200);
+
+loop {
+  blink(202,500);
+}
+
+sub blink($pin,$delay) {
+  RPi::Wiring::digital-write($pin, 1);# On
+  RPi::Wiring::delay($delay);# mS
+  RPi::Wiring::digital-write($pin, 0);# Off
+  RPi::Wiring::delay($delay);
+}
+
 AUTHOR
 ======
 

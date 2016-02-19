@@ -1,5 +1,11 @@
 use v6;
-unit class RPi::Device::PiFace;
+class RPi::Device::PiFace {
+  use NativeCall;
+
+  # Setup Functions
+  our sub setup-piface(int32) returns int32 is native('wiringPiDev')
+                                            is symbol('piFaceSetup') { * };
+
 
 =begin pod
 
@@ -21,6 +27,29 @@ The RPi 2 uses its SPI interface pins to control the PiFace 2.
 This module uses Perl6's NativeCall module to interface the WiringPi C library
 and the MCP23S17.c SPI driver from wiringpi.org.
 
+=head1 USAGE
+
+use RPi;
+use RPi::Device::PiFace;
+
+RPi::Wiring::setup();
+
+# Setup the PiFace board
+# In effect, overlays RPi methods with equivalent methods from WiringPi's PiFace
+# C library
+my $res = RPi::Device::PiFace::setup-piface(200);
+
+loop {
+  blink(202,500);
+}
+
+sub blink($pin,$delay) {
+  RPi::Wiring::digital-write($pin, 1);# On
+  RPi::Wiring::delay($delay);# mS
+  RPi::Wiring::digital-write($pin, 0);# Off
+  RPi::Wiring::delay($delay);
+}
+
 =head1 AUTHOR
 
 Gary Ashton-Jones <gary@ashton-jones.com.au>
@@ -29,6 +58,9 @@ Gary Ashton-Jones <gary@ashton-jones.com.au>
 
 Copyright 2016 Gary Ashton-Jones
 
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+This library is free software; you can redistribute it and/or modify it under
+the Artistic License 2.0.
 
 =end pod
+
+}

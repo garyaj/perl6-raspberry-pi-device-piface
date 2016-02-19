@@ -4,6 +4,6 @@ plan 1;
 
 use RPi::Device::PiFace;
 
-pass "replace me";
+ok 1, 'RPi::Device::PiFace is loaded';
 
 done-testing;

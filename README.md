@@ -27,7 +27,8 @@ USAGE
 
     # Setup the PiFace board
     # In effect, overlays RPi methods with equivalent methods from WiringPi's
-    # PiFace  C library my $res = RPi::Device::PiFace::setup-piface(200);
+    # PiFace  C library
+    my $res = RPi::Device::PiFace::setup-piface(200);
 
     loop {
       blink(202,500);

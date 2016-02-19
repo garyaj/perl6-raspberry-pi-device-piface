@@ -20,26 +20,26 @@ This module uses Perl6's NativeCall module to interface the WiringPi C library a
 USAGE
 =====
 
-use RPi;
-use RPi::Device::PiFace;
+  use RPi;
+  use RPi::Device::PiFace;
 
-RPi::Wiring::setup();
+  RPi::Wiring::setup();
 
-# Setup the PiFace board
-# In effect, overlays RPi methods with equivalent methods from WiringPi's PiFace
-# C library
-my $res = RPi::Device::PiFace::setup-piface(200);
+  # Setup the PiFace board
+  # In effect, overlays RPi methods with equivalent methods from WiringPi's PiFace
+  # C library
+  my $res = RPi::Device::PiFace::setup-piface(200);
 
-loop {
-  blink(202,500);
-}
+  loop {
+    blink(202,500);
+  }
 
-sub blink($pin,$delay) {
-  RPi::Wiring::digital-write($pin, 1);# On
-  RPi::Wiring::delay($delay);# mS
-  RPi::Wiring::digital-write($pin, 0);# Off
-  RPi::Wiring::delay($delay);
-}
+  sub blink($pin,$delay) {
+    RPi::Wiring::digital-write($pin, 1);# On
+    RPi::Wiring::delay($delay);# mS
+    RPi::Wiring::digital-write($pin, 0);# Off
+    RPi::Wiring::delay($delay);
+  }
 
 AUTHOR
 ======

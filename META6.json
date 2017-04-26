@@ -1,5 +1,6 @@
 {
   "name" : "RPi::Device::PiFace",
+  "license" : "Artistic-2.0",
   "source-url" : "git://github.com/garyaj/perl6-raspberry-pi-device-piface.git",
   "perl" : "6.c",
   "resources" : [ ],
